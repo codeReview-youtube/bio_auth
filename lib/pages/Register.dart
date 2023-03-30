@@ -16,7 +16,7 @@ class _RegisterPage extends State<RegisterPage> {
     if (email.length > 10 && email.contains('@') && password.length > 10) {
       return true;
     }
-    return false;// TODO
+    return false; // TODO
   }
 
   Future<bool> get hasBioAuth async {
@@ -31,7 +31,7 @@ class _RegisterPage extends State<RegisterPage> {
         backgroundColor: Colors.amber.shade700,
         elevation: 0,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 220),
