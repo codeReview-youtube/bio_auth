@@ -3,8 +3,8 @@ import 'package:bio_auth/pages/login.dart';
 import 'package:bio_auth/services/AuthenticationService.dart';
 import 'package:bio_auth/widgets/gradientwrapper.dart';
 import 'package:bio_auth/widgets/passcode.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 
 class PasscodePage extends StatefulWidget {
   @override
@@ -47,8 +47,10 @@ class _PasscodePageState extends State<PasscodePage> {
   Future<void> authenticate() async {
     final isAuthenticated = await localAuth.authenticate(
         localizedReason: 'Do something',
-        stickyAuth: true,
-        useErrorDialogs: true);
+        options: AuthenticationOptions(
+          stickyAuth: true,
+          useErrorDialogs: true,
+        ));
     authService.isEnabledController.add(isAuthenticated);
     if (isAuthenticated) {
       Navigator.pushReplacement(
